@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SmartTour360 | Booking Verification</title>
+<style>
+*{box-sizing:border-box}body{margin:0;min-height:100vh;font-family:Arial,"Segoe UI",sans-serif;background:linear-gradient(135deg,#061525,#0b2948);color:#fff;display:grid;place-items:center;padding:24px}.card{width:min(580px,100%);background:#0b2037;border:1px solid #245477;border-radius:24px;padding:30px;box-shadow:0 20px 70px #0008}.brand{font-size:22px;font-weight:800}.brand span{color:#35b9ff}.badge{display:inline-flex;align-items:center;gap:7px;margin:18px 0 14px;padding:8px 12px;border-radius:99px;background:#22c55e22;color:#86efac;border:1px solid #22c55e55;font-weight:800;font-size:11px}.check{width:76px;height:76px;border-radius:50%;display:grid;place-items:center;background:#22c55e;color:#fff;font-size:44px;font-weight:800;box-shadow:0 0 0 10px #22c55e18;margin-bottom:18px}h1{margin:0 0 8px;font-size:30px}p{color:#a5bacb;line-height:1.6;font-size:13px}.details{margin-top:22px;padding:8px 18px;border:1px solid #ffffff18;border-radius:16px;background:#ffffff08}.row{display:flex;justify-content:space-between;gap:20px;padding:13px 0;border-bottom:1px solid #ffffff12;font-size:13px}.row:last-child{border:0}.label{color:#829bb0}.value{text-align:right;font-weight:700;overflow-wrap:anywhere}.verified{color:#86efac}.actions{display:flex;gap:10px;margin-top:20px}.back,.print{flex:1;text-align:center;padding:12px 16px;border-radius:11px;text-decoration:none;font-weight:800;font-size:12px}.back{background:#35b9ff;color:#06203a}.print{background:#ffffff0d;color:#fff;border:1px solid #ffffff18;cursor:pointer}.foot{text-align:center;color:#6f899e;font-size:11px;margin-top:18px}.invalid{color:#fecaca;background:#ef444422;border:1px solid #ef444455;padding:14px;border-radius:14px;font-size:13px;line-height:1.5}@media(max-width:520px){.card{padding:22px}.row{flex-direction:column;gap:4px}.value{text-align:left}.actions{flex-direction:column}}
+</style>
+</head>
+<body>
+<main class="card">
+  <div class="brand">🌍 SmartTour<span>360</span></div>
+  <div class="badge">✓ DEMO VERIFIED</div>
+  <div class="check">✓</div>
+  <h1>Booking Verified</h1>
+  <p id="intro">This SmartTour360 demo booking has been verified successfully. The displayed information is demonstration data and does not represent a real payment.</p>
+  <section class="details" id="details">
+    <div class="row"><span class="label">Traveler Name</span><strong class="value" id="name">—</strong></div>
+    <div class="row"><span class="label">Booking ID</span><strong class="value" id="booking">—</strong></div>
+    <div class="row"><span class="label">Service</span><strong class="value" id="service">—</strong></div>
+    <div class="row"><span class="label">Amount</span><strong class="value" id="amount">—</strong></div>
+    <div class="row"><span class="label">Payment Method</span><strong class="value" id="method">—</strong></div>
+    <div class="row"><span class="label">Transaction ID</span><strong class="value" id="transaction">—</strong></div>
+    <div class="row"><span class="label">Booking Date</span><strong class="value" id="date">—</strong></div>
+    <div class="row"><span class="label">Payment Status</span><strong class="value verified">DEMO VERIFIED ✓</strong></div>
+  </section>
+  <div class="actions">
+    <a class="back" href="index.html">← Back to SmartTour360</a>
+    <button class="print" type="button" onclick="window.print()">Print Verification</button>
+  </div>
+  <div class="foot">SmartTour360 • YatraTech • Demo Prototype</div>
+</main>
+<script>
+(function(){
+  const q=new URLSearchParams(location.search);
+  const fields=['name','booking','service','amount','method','transaction','date'];
+  let hasBooking=false;
+  fields.forEach(function(k){
+    const v=q.get(k);
+    if(v){
+      hasBooking=true;
+      const el=document.getElementById(k);
+      if(el) el.textContent=k==='amount'?'₹'+Number(v).toLocaleString('en-IN'):v;
+    }
+  });
+
+  /* Also support opening verify.html without a query after a same-browser demo booking. */
+  if(!hasBooking){
+    try{
+      const saved=JSON.parse(localStorage.getItem('smarttour360_last_booking')||'null');
+      if(saved && saved.bookingId){
+        document.getElementById('name').textContent=saved.travelerName||'—';
+        document.getElementById('booking').textContent=saved.bookingId||'—';
+        document.getElementById('service').textContent=saved.service||'—';
+        document.getElementById('amount').textContent='₹'+Number(saved.amount||0).toLocaleString('en-IN');
+        document.getElementById('method').textContent=saved.paymentMethod||'—';
+        document.getElementById('transaction').textContent=saved.transactionId||'—';
+        document.getElementById('date').textContent=saved.date||'—';
+        hasBooking=true;
+      }
+    }catch(e){}
+  }
+
+  if(!hasBooking){
+    document.getElementById('details').innerHTML='<div class="invalid"><strong>No booking data found.</strong><br>Scan the QR code from a SmartTour360 demo booking receipt to verify that booking.</div>';
+    document.querySelector('.badge').textContent='⚠ DEMO RECORD NOT FOUND';
+    document.querySelector('.check').textContent='!';
+  }
+})();
+</script>
+</body>
+</html>

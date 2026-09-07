@@ -1,0 +1,2747 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SmartTour360 | Smart Tourism Platform</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+    
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+
+    <div class="logo">
+        <span>🌍</span> SmartTour<span>360</span>
+    </div>
+
+    <nav class="smart-main-nav" aria-label="SmartTour360 Features">
+        <a href="#home">🏠 Home</a>
+        <a href="#dashboard">📊 Dashboard</a>
+        <a href="#destinations">📍 Destinations</a>
+        <a href="#hotels">🏨 Hotels</a>
+        <a href="#stay">💰 Smart Budget</a>
+        <a href="#planner">🧳 Trip Planner</a>
+        <a href="#assistant">🤖 AI Assistant</a>
+        <a href="#weather">🌤️ Weather</a>
+        <a href="#trainFinder">🚆 Train &amp; Metro</a>
+        <a href="#smartRouteOptimizer">🧭 Route Optimizer</a>
+        <a href="#liveTrainMap">🗺️ Live Map</a>
+        <a href="#smartTools">📍 Nearby Places</a>
+        <a href="#packingAssistant">🎒 Packing</a>
+        <a href="#reviews">⭐ Reviews</a>
+        <a href="#virtualGroupTour">👥 Virtual Group Tour</a>
+        <a href="#seatTracker">💺 Seat Tracker</a>
+        <a href="#crimeSafety">🛡️ Crime Safety</a>
+        <a href="#aiMood">🧠 AI Mood</a>
+    </nav>
+
+    <div class="nav-actions">
+
+        <button class="account-btn" onclick="openAccountModal()">
+            👤 Account
+        </button>
+
+        <button type="button" class="nav-emergency-top" onclick="openEmergencySafety()" aria-label="Open Emergency Tourist Safety System">
+            🚨 Emergency
+        </button>
+
+        <button class="nav-btn" onclick="scrollToSection('planner')">
+            ✈️ Plan My Trip
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <p class="hero-tag">
+            🌍 SMART TOURISM EXPERIENCE
+        </p>
+
+        <h1>
+            Explore India<br>
+            <span>Like Never Before</span>
+        </h1>
+
+        <p class="hero-description">
+            Discover amazing destinations, plan your trip,
+            find hotels and calculate your budget — all in one place.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="#destinations" class="hero-btn primary-btn">
+                Explore Destinations →
+            </a>
+
+            <a href="#planner" class="hero-btn secondary-btn">
+                Plan My Trip
+            </a>
+
+        </div>
+
+        <div class="hero-stats">
+
+            <div>
+                <strong>12+</strong>
+                <span>Destinations</span>
+            </div>
+
+            <div>
+                <strong>360°</strong>
+                <span>Experience</span>
+            </div>
+
+            <div>
+                <strong>24/7</strong>
+                <span>Travel Assistant</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FEATURES ================= -->
+
+<section class="features">
+
+    <div class="feature-card">
+        <div class="feature-icon">📍</div>
+        <h3>Explore Places</h3>
+        <p>Discover popular and hidden tourist destinations.</p>
+    </div>
+
+    <div class="feature-card">
+        <div class="feature-icon">🏨</div>
+        <h3>Find Hotels</h3>
+        <p>Discover suitable hotels for your journey.</p>
+    </div>
+
+    <div class="feature-card">
+        <div class="feature-icon">💰</div>
+        <h3>Smart Budget</h3>
+        <p>Estimate your complete trip expenses easily.</p>
+    </div>
+
+    <div class="feature-card">
+        <div class="feature-icon">🤖</div>
+        <h3>AI Assistant</h3>
+        <p>Get smart travel suggestions and guidance.</p>
+    </div>
+
+</section>
+
+
+
+<!-- ================= SMART TOURIST DASHBOARD ================= -->
+<section id="dashboard" class="st360-dashboard-section">
+    <div class="st360-section-heading">
+        <div class="st360-feature-kicker">📊 SMART TRAVEL COMMAND CENTER</div>
+        <h2>Smart Tourist Dashboard</h2>
+        <p>Everything you need for a smarter, safer and better-planned journey — in one place.</p>
+    </div>
+
+    <div class="st360-dashboard-stats">
+        <div class="st360-stat-card"><span>🌍</span><strong>12+</strong><small>Destinations</small></div>
+        <div class="st360-stat-card"><span>🚆</span><strong>2</strong><small>Transport Modes</small></div>
+        <div class="st360-stat-card"><span>🧳</span><strong>1</strong><small>Smart Packing Tool</small></div>
+        <div class="st360-stat-card"><span>⭐</span><strong id="dashboardReviewCount">3+</strong><small>Traveller Reviews</small></div>
+    </div>
+
+    <div class="st360-dashboard-actions">
+        <a href="#destinations" class="st360-dashboard-action"><span>🗺️</span><div><b>Explore Destinations</b><small>Find your next trip</small></div><i>→</i></a>
+        <a href="#planner" class="st360-dashboard-action"><span>🧠</span><div><b>Plan My Trip</b><small>Create a smart itinerary</small></div><i>→</i></a>
+        <a href="#smartTools" class="st360-dashboard-action"><span>📍</span><div><b>Nearby Places & Map</b><small>Discover places around you</small></div><i>→</i></a>
+        <a href="#packingAssistant" class="st360-dashboard-action"><span>🧳</span><div><b>Packing Assistant</b><small>Generate your checklist</small></div><i>→</i></a>
+        <a href="#reviews" class="st360-dashboard-action"><span>⭐</span><div><b>Reviews & Ratings</b><small>See traveller feedback</small></div><i>→</i></a>
+        <button type="button" class="st360-dashboard-action" onclick="openEmergencySafety()"><span>🚨</span><div><b>Emergency Safety</b><small>Quick safety assistance</small></div><i>→</i></button>
+    </div>
+</section>
+
+<!-- ================= SEARCH ================= -->
+
+<div class="destination-search">
+
+    <input
+        type="text"
+        id="destinationSearch"
+        placeholder="🔍 Search destination... e.g. Goa, Manali, Jaipur"
+        onkeyup="searchDestinations()"
+    >
+
+</div>
+
+
+<!-- ================= DESTINATIONS ================= -->
+
+<section id="destinations" class="section">
+
+    <div class="section-heading">
+
+        <p>POPULAR DESTINATIONS</p>
+
+        <h2>Explore Incredible India</h2>
+
+        <span>
+            Discover amazing places and plan your next unforgettable journey.
+        </span>
+
+    </div>
+
+    <div class="destination-grid">
+
+        <!-- RISHIKESH -->
+        <div class="destination-card">
+
+            <div class="destination-image">
+                <img src="images/rishikesh.jpg" alt="Rishikesh">
+                <span>Adventure</span>
+            </div>
+
+            <div class="destination-info">
+                <h3>Rishikesh</h3>
+                <p>📍 Uttarakhand</p>
+                <p>River rafting, yoga, temples, mountains and adventure.</p>
+
+                <button onclick="showDestination('Rishikesh')">
+                    Explore →
+                </button>
+            </div>
+
+        </div>
+
+
+        <!-- MANALI -->
+        <div class="destination-card">
+
+            <div class="destination-image">
+                <img src="images/manali.jpg" alt="Manali">
+                <span>Mountains</span>
+            </div>
+
+            <div class="destination-info">
+                <h3>Manali</h3>
+                <p>📍 Himachal Pradesh</p>
+                <p>Snow-covered mountains, valleys, nature and adventure.</p>
+
+                <button onclick="showDestination('Manali')">
+                    Explore →
+                </button>
+            </div>
+
+        </div>
+
+
+        <!-- GOA -->
+        <div class="destination-card">
+
+            <div class="destination-image">
+                <img src="images/goa.jpg" alt="Goa">
+                <span>Beach</span>
+            </div>
+
+            <div class="destination-info">
+                <h3>Goa</h3>
+                <p>📍 India</p>
+                <p>Beautiful beaches, food, culture and exciting activities.</p>
+
+                <button onclick="showDestination('Goa')">
+                    Explore →
+                </button>
+            </div>
+
+        </div>
+
+
+        <!-- JAIPUR -->
+        <div class="destination-card">
+
+            <div class="destination-image">
+                <img src="images/jaipur.jpg" alt="Jaipur">
+                <span>Heritage</span>
+            </div>
+
+            <div class="destination-info">
+                <h3>Jaipur</h3>
+                <p>📍 Rajasthan</p>
+                <p>Forts, palaces, royal heritage and traditional culture.</p>
+
+                <button onclick="showDestination('Jaipur')">
+                    Explore →
+                </button>
+            </div>
+
+        </div>
+
+
+        <!-- JAMMU KASHMIR -->
+        <div class="destination-card">
+
+            <div class="destination-image">
+                <img src="images/jammu-kashmir.jpg" alt="Jammu and Kashmir">
+                <span>Nature</span>
+            </div>
+
+            <div class="destination-info">
+                <h3>Jammu & Kashmir</h3>
+                <p>📍 India</p>
+                <p>Stunning valleys, mountains, lakes and beautiful landscapes.</p>
+
+                <button onclick="showDestination('Jammu & Kashmir')">
+                    Explore →
+                </button>
+            </div>
+
+        </div>
+
+
+        <!-- VARANASI -->
+        <div class="destination-card">
+
+            <div class="destination-image">
+                <img src="images/varanasi.jpg" alt="Varanasi">
+                <span>Spiritual</span>
+            </div>
+
+            <div class="destination-info">
+                <h3>Varanasi</h3>
+                <p>📍 Uttar Pradesh</p>
+                <p>Experience Ganga Aarti, temples, ghats and ancient culture.</p>
+
+                <button onclick="showDestination('Varanasi')">
+                    Explore →
+                </button>
+            </div>
+
+        </div>
+
+
+        <!-- AYODHYA -->
+        <div class="destination-card">
+
+            <div class="destination-image">
+                <img src="images/ayodhya.jpg" alt="Ayodhya">
+                <span>Culture</span>
+            </div>
+
+            <div class="destination-info">
+                <h3>Ayodhya</h3>
+                <p>📍 Uttar Pradesh</p>
+                <p>A city of heritage, devotion, culture and spiritual experiences.</p>
+
+                <button onclick="showDestination('Ayodhya')">
+                    Explore →
+                </button>
+            </div>
+
+        </div>
+
+
+        <!-- VRINDAVAN -->
+        <div class="destination-card">
+
+            <div class="destination-image">
+                <img src="images/vrindavan.jpg" alt="Vrindavan">
+                <span>Spiritual</span>
+            </div>
+
+            <div class="destination-info">
+                <h3>Vrindavan</h3>
+                <p>📍 Uttar Pradesh</p>
+                <p>Famous temples, spiritual places, culture and peaceful surroundings.</p>
+
+                <button onclick="showDestination('Vrindavan')">
+                    Explore →
+                </button>
+            </div>
+
+        </div>
+
+
+        <!-- AGRA -->
+        <div class="destination-card">
+
+            <div class="destination-image">
+                <img src="images/agra.jpg" alt="Agra">
+                <span>Monuments</span>
+            </div>
+
+            <div class="destination-info">
+                <h3>Agra</h3>
+                <p>📍 Uttar Pradesh</p>
+                <p>Discover the Taj Mahal, historic monuments and Mughal architecture.</p>
+
+                <button onclick="showDestination('Agra')">
+                    Explore →
+                </button>
+            </div>
+
+        </div>
+
+
+        <!-- SHIMLA -->
+        <div class="destination-card">
+
+            <div class="destination-image">
+                <img src="images/shimla.jpg" alt="Shimla">
+                <span>Hills</span>
+            </div>
+
+            <div class="destination-info">
+                <h3>Shimla</h3>
+                <p>📍 Himachal Pradesh</p>
+                <p>Queen of Hills with scenic views, nature and pleasant weather.</p>
+
+                <button onclick="showDestination('Shimla')">
+                    Explore →
+                </button>
+            </div>
+
+        </div>
+
+
+        <!-- KERALA -->
+        <div class="destination-card">
+
+            <div class="destination-image">
+                <img src="images/kerala.jpg" alt="Kerala">
+                <span>Backwaters</span>
+            </div>
+
+            <div class="destination-info">
+                <h3>Kerala</h3>
+                <p>📍 Kerala</p>
+                <p>Beautiful backwaters, beaches, hill stations and natural beauty.</p>
+
+                <button onclick="showDestination('Kerala')">
+                    Explore →
+                </button>
+            </div>
+
+        </div>
+
+
+        <!-- UDAIPUR -->
+        <div class="destination-card">
+
+            <div class="destination-image">
+                <img src="images/udaipur.jpg" alt="Udaipur">
+                <span>Heritage</span>
+            </div>
+
+            <div class="destination-info">
+                <h3>Udaipur</h3>
+                <p>📍 Rajasthan</p>
+                <p>City of lakes, royal palaces, heritage and amazing views.</p>
+
+                <button onclick="showDestination('Udaipur')">
+                    Explore →
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= INNOVATION ================= -->
+
+<section class="innovation">
+
+    <div class="innovation-content">
+
+        <p class="section-label">OUR INNOVATION</p>
+
+        <h2>
+            One Platform.<br>
+            Complete Travel Experience.
+        </h2>
+
+        <p>
+            SmartTour360 connects travelers with destinations,
+            hotels, travel services and local tourism businesses
+            through a single smart platform.
+        </p>
+
+        <div class="innovation-points">
+
+            <div><span>✓</span> Personalized travel planning</div>
+            <div><span>✓</span> Smart budget estimation</div>
+            <div><span>✓</span> Local tourism promotion</div>
+            <div><span>✓</span> AI-powered travel assistance</div>
+
+        </div>
+
+    </div>
+
+    <div class="innovation-box">
+
+        <div class="innovation-circle">🌍</div>
+
+        <h3>Smart Tourism</h3>
+
+        <p>
+            Travel planning made simple,
+            intelligent and accessible.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ================= HOTELS ================= -->
+
+<section id="hotels" class="section hotel-section">
+
+    <div class="section-heading">
+
+        <p>STAY COMFORTABLY</p>
+
+        <h2>Find Your Perfect Stay</h2>
+
+        <span>
+            Discover hotels and accommodations near your destination.
+        </span>
+
+    </div>
+
+    <div class="hotel-grid">
+
+        <div class="hotel-card">
+
+            <div class="hotel-icon">🏨</div>
+
+            <h3>Luxury Hotels</h3>
+
+            <p>Comfortable stays with premium facilities.</p>
+
+            <button onclick="openPaymentModal('Luxury Hotel Booking', 5999)">
+                💳 Book & Pay
+            </button>
+
+        </div>
+
+        <div class="hotel-card">
+
+            <div class="hotel-icon">🏡</div>
+
+            <h3>Budget Stays</h3>
+
+            <p>Affordable accommodation for smart travelers.</p>
+
+            <button onclick="openPaymentModal('Budget Hotel Booking', 1999)">
+                💳 Book & Pay
+            </button>
+
+        </div>
+
+        <div class="hotel-card">
+
+            <div class="hotel-icon">🌿</div>
+
+            <h3>Local Homestays</h3>
+
+            <p>Experience local culture and hospitality.</p>
+
+            <button onclick="openPaymentModal('Local Homestay Booking', 2499)">
+                💳 Book & Pay
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= SMART STAY ================= -->
+
+<section id="stay" class="stay-section">
+
+    <div class="section-heading">
+
+        <p>SMART STAY & ENTERTAINMENT</p>
+
+        <h2>Stay, Relax & Explore</h2>
+
+        <span>
+            Find suitable stays and enjoyable evening experiences
+            according to your travel style.
+        </span>
+
+    </div>
+
+
+    <div class="stay-container">
+
+        <div class="stay-card">
+
+            <div class="stay-icon">🏨</div>
+
+            <h3>Budget Stay</h3>
+
+            <p>
+                Comfortable and affordable stays for
+                students and budget travellers.
+            </p>
+
+            <strong>₹800 - ₹2,000 / night</strong>
+
+            <button onclick="openPaymentModal('Budget Stay', 1499)">
+                💳 Book & Pay
+            </button>
+
+        </div>
+
+
+        <div class="stay-card">
+
+            <div class="stay-icon">⭐</div>
+
+            <h3>Standard Stay</h3>
+
+            <p>
+                Better comfort, convenient location and
+                useful hotel facilities.
+            </p>
+
+            <strong>₹2,000 - ₹4,500 / night</strong>
+
+            <button onclick="openPaymentModal('Standard Stay', 2999)">
+                💳 Book & Pay
+            </button>
+
+        </div>
+
+
+        <div class="stay-card">
+
+            <div class="stay-icon">💎</div>
+
+            <h3>Premium Stay</h3>
+
+            <p>
+                Premium hotels and resorts for a
+                comfortable travel experience.
+            </p>
+
+            <strong>₹4,500+ / night</strong>
+
+            <button onclick="openPaymentModal('Premium Stay', 4999)">
+                💳 Book & Pay
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- EVENING -->
+
+    <div class="entertainment-heading">
+
+        <p>🌙 EVENING EXPERIENCES</p>
+
+        <h2>Refresh Your Travel Mood</h2>
+
+        <span>
+            Discover safe and enjoyable evening activities
+            at your destination.
+        </span>
+
+    </div>
+
+
+    <div class="entertainment-container">
+
+        <a class="entertainment-card" href="https://open.spotify.com/search/live%20music" target="_blank" rel="noopener noreferrer" aria-label="Open Live Music on Spotify">
+            <span>🎵</span>
+            <h3>Live Music</h3>
+            <p>Enjoy live music and relaxed evening performances.</p>
+        </a>
+
+        <a class="entertainment-card" href="https://www.google.com/maps/search/?api=1&query=evening+cafes" target="_blank" rel="noopener noreferrer" aria-label="Find Evening Cafés on Google Maps">
+            <span>☕</span>
+            <h3>Evening Cafés</h3>
+            <p>Discover popular cafés for food and relaxation.</p>
+        </a>
+
+        <a class="entertainment-card" href="https://www.google.com/maps/search/?api=1&query=night+markets" target="_blank" rel="noopener noreferrer" aria-label="Find Night Markets on Google Maps">
+            <span>🌆</span>
+            <h3>Night Markets</h3>
+            <p>Explore local shopping, food and cultural experiences.</p>
+        </a>
+
+        <a class="entertainment-card" href="https://www.google.com/search?q=cultural+shows+near+me" target="_blank" rel="noopener noreferrer" aria-label="Search Cultural Shows">
+            <span>🎭</span>
+            <h3>Cultural Shows</h3>
+            <p>Experience local culture through music and performances.</p>
+        </a>
+
+        <a class="entertainment-card" href="https://www.google.com/maps/search/?api=1&query=entertainment+zones" target="_blank" rel="noopener noreferrer" aria-label="Find Entertainment Zones on Google Maps">
+            <span>🎮</span>
+            <h3>Entertainment Zones</h3>
+            <p>Find fun indoor activities and entertainment spaces.</p>
+        </a>
+
+        <a class="entertainment-card" href="https://www.google.com/maps/search/?api=1&query=tourist+attractions" target="_blank" rel="noopener noreferrer" aria-label="Explore Tourist Attractions on Google Maps">
+            <span>🌃</span>
+            <h3>City Exploration</h3>
+            <p>Explore beautiful places and landmarks during the evening.</p>
+        </a>
+
+    </div>
+
+
+    <!-- RECOMMENDATION -->
+
+    <div class="smart-recommendation">
+
+        <div class="recommendation-heading">
+
+            <p>🤖 SMART RECOMMENDATION</p>
+
+            <h2>Get Destination-Based Recommendations</h2>
+
+            <span>
+                Select your destination and get smart suggestions
+                for stays, attractions and evening experiences.
+            </span>
+
+        </div>
+
+        <div class="recommendation-box">
+
+            <select id="recommendationDestination">
+
+                <option value="">Select Destination</option>
+
+                <option>Rishikesh</option>
+                <option>Manali</option>
+                <option>Goa</option>
+                <option>Jaipur</option>
+                <option>Jammu & Kashmir</option>
+                <option>Varanasi</option>
+                <option>Ayodhya</option>
+                <option>Vrindavan</option>
+                <option>Agra</option>
+                <option>Shimla</option>
+                <option>Kerala</option>
+                <option>Udaipur</option>
+
+            </select>
+
+            <button onclick="getSmartRecommendation()">
+                ✨ Get Smart Recommendation
+            </button>
+
+        </div>
+
+        <div id="recommendationResult" class="recommendation-result"></div>
+
+    </div>
+
+
+    <!-- EXPENSE -->
+
+    <div class="smart-expense-container">
+
+        <div class="recommendation-heading">
+
+            <p>💰 SMART EXPENSE PLANNER</p>
+
+            <h2>Know Your Estimated Trip Cost</h2>
+
+            <span>
+                Get a simple expense breakdown before starting your journey.
+            </span>
+
+        </div>
+
+        <div class="expense-planner-box">
+
+            <div class="expense-input-group">
+
+                <label>📍 Destination</label>
+
+                <select id="expenseDestination">
+
+                    <option value="">Select Destination</option>
+
+                    <option>Rishikesh</option>
+                    <option>Manali</option>
+                    <option>Goa</option>
+                    <option>Jaipur</option>
+                    <option>Jammu & Kashmir</option>
+                    <option>Varanasi</option>
+                    <option>Ayodhya</option>
+                    <option>Vrindavan</option>
+                    <option>Agra</option>
+                    <option>Shimla</option>
+                    <option>Kerala</option>
+                    <option>Udaipur</option>
+
+                </select>
+
+            </div>
+
+            <div class="expense-input-group">
+
+                <label>📅 Number of Days</label>
+
+                <input
+                    type="number"
+                    id="expenseDays"
+                    placeholder="Example: 3"
+                    min="1"
+                >
+
+            </div>
+
+            <div class="expense-input-group">
+
+                <label>👥 Travelers</label>
+
+                <input
+                    type="number"
+                    id="expenseTravelers"
+                    placeholder="Example: 4"
+                    min="1"
+                >
+
+            </div>
+
+            <div class="expense-input-group">
+
+                <label>💵 Your Budget (₹)</label>
+
+                <input
+                    type="number"
+                    id="expenseBudget"
+                    placeholder="Example: 15000"
+                    min="0"
+                >
+
+            </div>
+
+            <button
+                class="expense-calculate-btn"
+                onclick="calculateExpenseBreakdown()"
+            >
+                🧮 Calculate Trip Cost
+            </button>
+
+        </div>
+
+        <div id="expenseResult" class="expense-result"></div>
+
+    </div>
+
+
+    <div id="stayMessage" class="stay-message"></div>
+
+</section>
+
+
+<!-- ================= TRIP PLANNER ================= -->
+
+<section id="planner" class="planner-section">
+
+    <div class="section-heading light">
+
+        <p>SMART TRIP PLANNER</p>
+
+        <h2>Plan Your Trip Your Way</h2>
+
+        <span>
+            Choose your travel style and let SmartTour360 handle the planning.
+        </span>
+
+    </div>
+
+
+    <div class="trip-mode-container">
+
+        <button
+            class="trip-mode active"
+            id="familyMode"
+            onclick="selectTripMode('family')"
+        >
+            <span class="mode-icon">👨‍👩‍👧‍👦</span>
+            <strong>Family Trip</strong>
+            <small>Comfortable family planning</small>
+        </button>
+
+
+        <button
+            class="trip-mode"
+            id="friendsMode"
+            onclick="selectTripMode('friends')"
+        >
+            <span class="mode-icon">🧑‍🤝‍🧑</span>
+            <strong>Friends Trip</strong>
+            <small>Split expenses fairly</small>
+        </button>
+
+
+        <button
+            class="trip-mode"
+            id="soloMode"
+            onclick="selectTripMode('solo')"
+        >
+            <span class="mode-icon">👤</span>
+            <strong>Solo Trip</strong>
+            <small>Personal travel planning</small>
+        </button>
+
+    </div>
+
+
+    <div class="planner-box">
+
+        <div class="input-group">
+
+            <label>📍 Destination</label>
+
+            <input
+                type="text"
+                id="tripDestination"
+                placeholder="Example: Rishikesh"
+                list="smartDestinationList"
+                autocomplete="off"
+            >
+
+            <datalist id="smartDestinationList">
+                <option value="Rishikesh"></option><option value="Manali"></option>
+                <option value="Goa"></option><option value="Jaipur"></option>
+                <option value="Jammu & Kashmir"></option><option value="Varanasi"></option>
+                <option value="Ayodhya"></option><option value="Vrindavan"></option>
+                <option value="Agra"></option><option value="Shimla"></option>
+                <option value="Kerala"></option><option value="Udaipur"></option>
+            </datalist>
+
+        </div>
+
+
+        <div class="input-group">
+
+            <label>📅 Number of Days</label>
+
+            <input
+                type="number"
+                id="tripDays"
+                placeholder="Example: 3"
+                min="1"
+            >
+
+        </div>
+
+
+        <div
+            class="input-group"
+            id="familyMembersGroup"
+        >
+
+            <label>👨‍👩‍👧‍👦 Family Members</label>
+
+            <input
+                type="number"
+                id="familyMembers"
+                placeholder="Example: 4"
+                min="1"
+            >
+
+        </div>
+
+
+        <div
+            class="input-group"
+            id="friendsMembersGroup"
+            style="display:none;"
+        >
+
+            <label>🧑‍🤝‍🧑 Number of Friends</label>
+
+            <input
+                type="number"
+                id="friendsMembers"
+                placeholder="Example: 4"
+                min="2"
+            >
+
+        </div>
+
+
+        <div class="input-group">
+
+            <label>💰 Total Trip Budget (₹)</label>
+
+            <input
+                type="number"
+                id="tripBudget"
+                placeholder="Example: 12000"
+                min="0"
+            >
+
+        </div>
+
+
+        <button
+            class="planner-btn"
+            onclick="createTripPlan()"
+        >
+            ✨ Create Smart Plan
+        </button>
+
+
+        <div id="plannerResult" class="planner-result"></div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= AI ASSISTANT ================= -->
+
+<section id="assistant" class="assistant-section">
+
+    <div class="section-heading light">
+
+        <p>SMART TRAVEL ASSISTANT</p>
+
+        <h2>Ask SmartTour360</h2>
+
+        <span>
+            Your personal AI travel assistant for smart trip planning.
+        </span>
+
+    </div>
+
+
+    <div class="assistant-box">
+
+        <div class="assistant-header">
+
+            <div class="assistant-avatar">🤖</div>
+
+            <div>
+                <h3>SmartTour AI</h3>
+                <p>Travel Assistant • Online</p>
+            </div>
+
+        </div>
+
+
+        <div id="chatMessages" class="chat-messages">
+
+            <div class="chat-message bot-message">
+
+                <div class="message-avatar">🤖</div>
+
+                <div class="message-content">
+
+                    <strong>SmartTour AI</strong>
+
+                    <p>
+                        Hi! 👋 Welcome to SmartTour360.
+                        <br><br>
+                        I'm your Smart Travel Assistant.
+                        <br><br>
+                        📍 Where would you like to travel?
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="chat-input-area">
+
+            <input
+                type="text"
+                id="chatInput"
+                placeholder="Type your message..."
+                autocomplete="off"
+            >
+
+            <button
+                onclick="sendMessage()"
+                class="chat-send-btn"
+            >
+                ➤
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CTA ================= -->
+
+<section class="cta">
+
+    <h2>Ready to Explore?</h2>
+
+    <p>Plan smarter. Travel better. Discover more.</p>
+
+    <button
+        class="primary-btn"
+        onclick="scrollToSection('planner')"
+    >
+        Start Planning →
+    </button>
+
+</section>
+
+
+<!-- ================= DEMO PAYMENT MODAL ================= -->
+<div id="paymentModal" class="payment-modal" aria-hidden="true">
+    <div class="payment-modal-box">
+        <button class="payment-close" onclick="closePaymentModal()" aria-label="Close payment">×</button>
+        <div class="payment-badge">🔒 DEMO PAYMENT</div>
+        <h2>Complete Your Booking</h2>
+        <p class="payment-subtitle">Secure checkout experience for the SmartTour360 prototype.</p>
+
+        <div class="payment-summary">
+            <div><span>Service</span><strong id="paymentService">Travel Booking</strong></div>
+            <div><span>Demo Amount</span><strong id="paymentAmount">₹0</strong></div>
+        </div>
+
+        <div class="payment-methods">
+            <button class="payment-method active" onclick="selectPaymentMethod('UPI', this)">📱 UPI</button>
+            <button class="payment-method" onclick="selectPaymentMethod('Card', this)">💳 Card</button>
+            <button class="payment-method" onclick="selectPaymentMethod('Net Banking', this)">🏦 Net Banking</button>
+        </div>
+
+        <div class="demo-payment-note">
+            <span>ℹ️</span>
+            <div><strong>Demo Mode</strong><br>No real money will be charged. Do not enter real payment details.</div>
+        </div>
+
+        <div class="demo-payment-field">
+            <label for="demoPayerName">Traveler Name</label>
+            <input id="demoPayerName" type="text" placeholder="Enter traveler name">
+        </div>
+
+        <div id="paymentInputArea" class="demo-payment-field">
+            <label for="demoPaymentRef">Demo Payment Reference</label>
+            <input id="demoPaymentRef" type="text" placeholder="e.g. DEMO-UPI-1234" autocomplete="off">
+        </div>
+
+        <button type="button" class="demo-pay-btn" onclick="processDemoPayment(event)">
+            Pay <span id="payButtonAmount">₹0</span> — Demo
+        </button>
+        <p id="paymentStatus" class="payment-status" role="status"></p>
+    </div>
+</div>
+
+<!-- ================= DESTINATION MODAL ================= -->
+
+<div id="destinationModal" class="destination-modal">
+
+    <div class="destination-modal-box">
+
+        <button
+            class="modal-close"
+            onclick="closeDestination()"
+        >
+            &times;
+        </button>
+
+        <div class="modal-content">
+
+            <p class="modal-label">SMART TOUR360</p>
+
+            <h2 id="modalTitle">Destination</h2>
+
+            <p id="modalLocation" class="modal-location"></p>
+
+
+            <div class="modal-info-grid">
+
+                <div class="modal-info-card">
+
+                    <span>⭐</span>
+
+                    <div>
+                        <small>Top Attractions</small>
+                        <p id="modalAttractions"></p>
+                    </div>
+
+                </div>
+
+
+                <div class="modal-info-card">
+
+                    <span>💰</span>
+
+                    <div>
+                        <small>Estimated Budget</small>
+                        <p id="modalBudget"></p>
+                    </div>
+
+                </div>
+
+
+                <div class="modal-info-card">
+
+                    <span>🗓️</span>
+
+                    <div>
+                        <small>Best Time</small>
+                        <p id="modalBestTime"></p>
+                    </div>
+
+                </div>
+
+
+                <div class="modal-info-card">
+
+                    <span>🏨</span>
+
+                    <div>
+                        <small>Stay</small>
+                        <p id="modalStay"></p>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="modal-tip">
+
+                <strong>💡 Smart Travel Tip</strong>
+
+                <p id="modalTip"></p>
+
+            </div>
+
+
+            <a
+                href="#planner"
+                class="modal-plan-btn"
+                onclick="planDestinationFromModal()"
+            >
+                Plan This Trip →
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ================= ACCOUNT MODAL ================= -->
+
+<div id="accountModal" class="account-modal">
+
+    <div class="account-modal-box">
+
+        <button
+            class="account-close"
+            onclick="closeAccountModal()"
+        >
+            &times;
+        </button>
+
+
+        <div class="account-header">
+
+            <div class="account-icon">👤</div>
+
+            <h2>SmartTour360</h2>
+
+            <p>Your Personal Travel Account</p>
+
+            <div class="account-demo-badge">🧪 DEMO ACCOUNT — No real registration or database</div>
+
+            <p class="account-demo-note">Your demo details stay in this browser only. This is for hackathon presentation and testing.</p>
+
+        </div>
+
+
+        <!-- LOGIN -->
+
+        <div id="loginForm" class="account-form">
+
+            <h3>Welcome Back! 👋</h3>
+
+            <p class="account-subtitle">
+                Login to continue your smart travel journey.
+            </p>
+
+
+            <div class="account-input-group">
+
+                <label>📧 Email Address</label>
+
+                <input
+                    type="email"
+                    id="loginEmail"
+                    placeholder="Enter your email"
+                    autocomplete="email"
+                >
+
+            </div>
+
+
+            <div class="account-input-group">
+
+                <label>🔒 Password</label>
+
+                <input
+                    type="password"
+                    id="loginPassword"
+                    placeholder="Enter your password"
+                    autocomplete="current-password"
+                >
+
+            </div>
+
+
+            <button
+                type="button"
+                class="account-submit-btn"
+                onclick="loginUser()"
+            >
+                🔐 Login
+            </button>
+
+
+            <p class="account-switch">
+
+                Don't have an account?
+
+                <button
+                    type="button"
+                    onclick="showSignupForm()"
+                >
+                    Sign Up
+                </button>
+
+            </p>
+
+
+            <div id="loginMessage" class="account-message"></div>
+
+        </div>
+
+
+        <!-- SIGNUP -->
+
+        <div
+            id="signupForm"
+            class="account-form"
+            style="display:none;"
+        >
+
+            <h3>Create Your Account 🚀</h3>
+
+            <p class="account-subtitle">
+                Join SmartTour360 and plan smarter trips.
+            </p>
+
+
+            <div class="account-input-group">
+
+                <label>👤 Full Name</label>
+
+                <input
+                    type="text"
+                    id="signupName"
+                    placeholder="Enter your full name"
+                    autocomplete="name"
+                >
+
+            </div>
+
+
+            <div class="account-input-group">
+
+                <label>📧 Email Address</label>
+
+                <input
+                    type="email"
+                    id="signupEmail"
+                    placeholder="Enter your email"
+                    autocomplete="email"
+                >
+
+            </div>
+
+
+            <div class="account-input-group">
+
+                <label>🔒 Password</label>
+
+                <input
+                    type="password"
+                    id="signupPassword"
+                    placeholder="Create a password"
+                    autocomplete="new-password"
+                >
+
+            </div>
+
+
+            <div class="account-input-group">
+
+                <label>🔐 Confirm Password</label>
+
+                <input
+                    type="password"
+                    id="signupConfirmPassword"
+                    placeholder="Confirm your password"
+                    autocomplete="new-password"
+                >
+
+            </div>
+
+
+            <button
+                type="button"
+                class="account-submit-btn"
+                onclick="signupUser()"
+            >
+                ✨ Create Account
+            </button>
+
+
+            <p class="account-switch">
+
+                Already have an account?
+
+                <button
+                    type="button"
+                    onclick="showLoginForm()"
+                >
+                    Login
+                </button>
+
+            </p>
+
+
+            <div id="signupMessage" class="account-message"></div>
+
+        </div>
+
+
+        <!-- PROFILE -->
+
+        <div
+            id="profileView"
+            class="account-form"
+            style="display:none;"
+        >
+
+            <div style="text-align:center;">
+
+                <div
+                    id="profileImageBox"
+                    style="
+                        width:90px;
+                        height:90px;
+                        margin:0 auto 15px;
+                        border-radius:50%;
+                        display:flex;
+                        align-items:center;
+                        justify-content:center;
+                        background:rgba(255,255,255,0.12);
+                        font-size:40px;
+                        overflow:hidden;
+                    "
+                >
+                    👤
+                </div>
+
+                <h3 id="profileName">
+                    User
+                </h3>
+
+                <p
+                    id="profileEmail"
+                    class="account-subtitle"
+                >
+                    user@email.com
+                </p>
+
+            </div>
+
+
+            <input
+                type="file"
+                id="profilePictureInput"
+                accept="image/*"
+                style="display:none;"
+                onchange="uploadProfilePicture(event)"
+            >
+
+
+            <button
+                type="button"
+                class="account-submit-btn"
+                onclick="document.getElementById('profilePictureInput').click()"
+            >
+                📷 Change Profile Picture
+            </button>
+
+
+            <button
+                type="button"
+                class="account-submit-btn"
+                onclick="logoutUser()"
+            >
+                🚪 Logout
+            </button>
+
+
+            <div
+                id="profileMessage"
+                class="account-message"
+            ></div>
+
+        </div>
+
+    </div>
+
+</div>
+<!-- =========================================
+     SMART TRAVEL WEATHER
+========================================= -->
+
+<section class="travel-weather" id="weather">
+
+    <div class="section-heading">
+        <span class="section-label">SMART TRAVEL SAFETY</span>
+
+        <h2>
+            5-Day <span>Weather Alert</span>
+        </h2>
+
+        <p>
+            Check the weather forecast before starting your journey
+            and plan your trip smarter.
+        </p>
+    </div>
+
+
+    <div class="weather-container">
+
+        <!-- WEATHER SEARCH -->
+
+        <div class="weather-search-card">
+
+            <div class="weather-icon">
+                🌦️
+            </div>
+
+            <h3>Check Your Trip Weather</h3>
+
+            <p>
+                Enter your destination and trip start date.
+            </p>
+
+
+            <div class="weather-form">
+
+                <div class="weather-input-group">
+
+                    <label for="weatherDestination">
+                        Destination
+                    </label>
+
+                    <input
+                        type="text"
+                        id="weatherDestination"
+                        placeholder="Example: Manali"
+                        autocomplete="off"
+                    >
+
+                </div>
+
+
+                <div class="weather-input-group">
+
+                    <label for="weatherStartDate">
+                        Trip Start Date
+                    </label>
+
+                    <input
+                        type="date"
+                        id="weatherStartDate"
+                    >
+
+                </div>
+
+
+                <button
+                    class="weather-check-btn"
+                    onclick="checkTripWeather()"
+                >
+                    🌤️ Check 5-Day Forecast
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- WEATHER RESULT -->
+
+        <div
+            id="weatherResult"
+            class="weather-result"
+        >
+
+            <div class="weather-empty">
+
+                <div class="weather-empty-icon">
+                    🌍
+                </div>
+
+                <h3>
+                    Your Travel Weather Will Appear Here
+                </h3>
+
+                <p>
+                    Enter your destination and trip date
+                    to get a 5-day forecast.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- ================= SMART TRAIN FINDER ================= -->
+<!-- =========================================================
+     SMARTTOUR360 - SMART TRAIN & METRO FINDER
+========================================================= -->
+
+<section class="train-finder-section" id="trainFinder">
+
+    <div class="train-finder-container">
+
+        <!-- HEADER -->
+        <div class="train-finder-header">
+
+            <span class="train-section-badge">
+                SMART TRANSPORT
+            </span>
+
+            <h2>
+                🚆 Smart Train & Metro Finder
+            </h2>
+
+            <p>
+                Find the best railway or metro option for your journey
+                using your location and travel date.
+            </p>
+
+        </div>
+
+
+        <!-- TRANSPORT TOGGLE -->
+
+        <div class="transport-toggle">
+
+            <button
+                type="button"
+                class="transport-tab active"
+                id="railwayTab"
+                onclick="switchTransportMode('railway')">
+
+                🚆 Train
+
+            </button>
+
+            <button
+                type="button"
+                class="transport-tab"
+                id="metroTab"
+                onclick="switchTransportMode('metro')">
+
+                🚇 Metro
+
+            </button>
+
+        </div>
+
+
+        <!-- LOCATION -->
+
+        <button
+            type="button"
+            class="location-btn"
+            id="useLocationBtn">
+
+            📍 Use My Current Location
+
+        </button>
+
+
+        <!-- LOCATION STATUS -->
+
+        <div
+            class="location-status"
+            id="locationStatus">
+        </div>
+
+
+        <!-- SEARCH FORM -->
+
+        <div class="train-search-form">
+
+
+            <!-- FROM -->
+
+            <div class="train-input-group">
+
+                <label for="trainFrom">
+                    📍 From
+                </label>
+
+                <input
+                    type="text"
+                    id="trainFrom"
+                    placeholder="Enter departure station"
+                    autocomplete="off"
+                >
+
+            </div>
+
+
+            <!-- TO -->
+
+            <div class="train-input-group">
+
+                <div class="transport-label-row">
+                    <label for="trainTo">
+                        🎯 To
+                    </label>
+                    <button type="button" class="transport-swap-btn" onclick="swapTransportStations()" title="Swap From and To">⇄ Swap</button>
+                </div>
+
+                <input
+                    type="text"
+                    id="trainTo"
+                    placeholder="Enter destination station"
+                    autocomplete="off"
+                >
+
+            </div>
+
+
+            <!-- DATE -->
+
+            <div class="train-input-group">
+
+                <label for="trainDate">
+                    📅 Travel Date
+                </label>
+
+                <input
+                    type="date"
+                    id="trainDate"
+                >
+
+            </div>
+
+
+            <!-- TYPE FILTER -->
+
+            <div class="train-input-group">
+
+                <label for="trainTypeFilter">
+                    ⚡ Transport Type
+                </label>
+
+                <select id="trainTypeFilter" onchange="switchTransportMode(this.value)">
+                    <option value="railway">🚆 Train</option>
+                    <option value="metro">🚇 Metro</option>
+                </select>
+
+            </div>
+
+
+            <!-- FIND BUTTON -->
+
+            <button
+                type="button"
+                class="find-train-btn"
+                id="findTrainBtn">
+
+                🔍 Find Best Transport
+
+            </button>
+
+        </div>
+
+
+        <!-- POPULAR DEMO ROUTES -->
+
+        <div class="transport-quick-routes">
+            <span>⚡ Quick routes:</span>
+            <button type="button" onclick="setTransportRoute('Dehradun Railway Station','New Delhi Railway Station')">Dehradun → New Delhi</button>
+            <button type="button" onclick="setTransportRoute('New Delhi Railway Station','Varanasi Junction')">Delhi → Varanasi</button>
+            <button type="button" onclick="setTransportRoute('New Delhi','IGI Airport')">Delhi → Airport</button>
+        </div>
+
+
+        <!-- SMART RECOMMENDATION -->
+
+        <div
+            class="smart-recommendation"
+            id="smartRecommendation">
+
+        </div>
+
+
+        <!-- RESULTS -->
+
+        <div
+            class="train-results"
+            id="trainResults">
+
+        </div>
+
+
+        <!-- RAIL TO METRO JOURNEY -->
+
+        <div
+            class="rail-metro-journey"
+            id="railMetroJourney">
+
+            <div class="journey-heading">
+
+                <span>🔄 SMART CONNECTION</span>
+
+                <h3>
+                    Rail → Metro Journey
+                </h3>
+
+                <p>
+                    Continue your journey from railway station
+                    to your final city destination using metro.
+                </p>
+
+            </div>
+
+
+            <div class="journey-flow">
+
+                <div class="journey-step">
+
+                    <div class="journey-icon">
+                        📍
+                    </div>
+
+                    <strong>
+                        Your Location
+                    </strong>
+
+                    <small>
+                        Current Position
+                    </small>
+
+                </div>
+
+
+                <div class="journey-line">
+                    →
+                </div>
+
+
+                <div class="journey-step">
+
+                    <div class="journey-icon">
+                        🚆
+                    </div>
+
+                    <strong>
+                        Railway Station
+                    </strong>
+
+                    <small>
+                        Train Journey
+                    </small>
+
+                </div>
+
+
+                <div class="journey-line">
+                    →
+                </div>
+
+
+                <div class="journey-step">
+
+                    <div class="journey-icon">
+                        🚇
+                    </div>
+
+                    <strong>
+                        Metro
+                    </strong>
+
+                    <small>
+                        City Connectivity
+                    </small>
+
+                </div>
+
+
+                <div class="journey-line">
+                    →
+                </div>
+
+
+                <div class="journey-step">
+
+                    <div class="journey-icon">
+                        🎯
+                    </div>
+
+                    <strong>
+                        Destination
+                    </strong>
+
+                    <small>
+                        Final Stop
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="journey-message"
+                id="journeyMessage">
+
+                💡 Select your railway journey to generate
+                a smart Rail-to-Metro connection.
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- =========================================================
+     SMART ROUTE OPTIMIZER
+========================================================= -->
+
+<section class="smart-route-section" id="smartRouteOptimizer">
+
+    <div class="smart-route-container">
+
+        <!-- HEADER -->
+        <div class="smart-route-header">
+
+            <span class="smart-route-badge">
+                🤖 AI POWERED ROUTING
+            </span>
+
+            <h2>
+                Smart Route Optimizer
+            </h2>
+
+            <p>
+                Find the best travel route based on your
+                time, budget and transfer preference.
+            </p>
+
+        </div>
+
+
+        <!-- SEARCH BOX -->
+        <div class="smart-route-form">
+
+            <!-- FROM -->
+            <div class="route-input-group">
+
+                <label for="routeFrom">
+                    📍 From
+                </label>
+
+                <input
+                    type="text"
+                    id="routeFrom"
+                    placeholder="Enter starting location"
+                    autocomplete="off"
+                >
+
+            </div>
+
+
+            <!-- DESTINATION -->
+            <div class="route-input-group">
+
+                <label for="routeDestination">
+                    🎯 Destination
+                </label>
+
+                <input
+                    type="text"
+                    id="routeDestination"
+                    placeholder="Enter destination"
+                    autocomplete="off"
+                >
+
+            </div>
+
+
+            <!-- DATE -->
+            <div class="route-input-group">
+
+                <label for="routeDate">
+                    📅 Travel Date
+                </label>
+
+                <input
+                    type="date"
+                    id="routeDate"
+                >
+
+            </div>
+
+
+            <!-- PREFERENCE -->
+            <div class="route-input-group">
+
+                <label for="routePreference">
+                    ⚙️ Preference
+                </label>
+
+                <select id="routePreference">
+
+                    <option value="balanced">
+                        ⭐ Balanced
+                    </option>
+
+                    <option value="fastest">
+                        ⚡ Fastest
+                    </option>
+
+                    <option value="cheapest">
+                        💰 Cheapest
+                    </option>
+
+                    <option value="transfers">
+                        🔄 Fewer Transfers
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- BUTTON -->
+            <button
+                type="button"
+                id="optimizeRouteBtn"
+                class="optimize-route-btn"
+            >
+                🚀 Optimize My Route
+            </button>
+
+        </div>
+
+
+        <!-- LOADING -->
+        <div
+            id="routeOptimizerLoading"
+            class="route-optimizer-loading"
+        >
+            🤖 Analyzing available travel routes...
+        </div>
+
+
+        <!-- RESULT -->
+        <div
+            id="smartRouteResults"
+            class="smart-route-results"
+        ></div>
+
+
+        <!-- ROUTE TIMELINE -->
+        <div
+            id="smartRouteTimeline"
+            class="smart-route-timeline"
+        ></div>
+
+
+        <!-- DEMO NOTE -->
+        <div class="route-demo-note">
+
+            💡 <strong>SmartTour360 Demo Mode:</strong>
+            Travel time and cost are estimated for demonstration.
+            Real-time transport APIs can be connected later.
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= END SMART ROUTE OPTIMIZER ================= -->
+<!-- ================= END SMART TRAIN FINDER ================= -->
+
+
+<!-- ================= LIVE TRAIN MAP ================= -->
+<section class="smart-map-section" id="liveTrainMap">
+    <div class="smart-map-header">
+        <div>
+            <span class="map-badge">LIVE LOCATION</span>
+            <h3>🗺️ Smart Live Train Map</h3>
+            <p>See your current location, nearest railway station and route on the map.</p>
+        </div>
+
+        <div class="map-distance-box">
+            <span>Journey Distance</span>
+            <strong id="journeyDistance">-- KM</strong>
+        </div>
+    </div>
+
+    <div id="smartTrainMap" aria-label="SmartTour360 live train map"></div>
+
+    <div class="map-location-info">
+        <div class="map-info-card">
+            <div class="map-info-icon">📍</div>
+            <div>
+                <small>Your Location</small>
+                <strong id="currentLocationName">Waiting...</strong>
+            </div>
+        </div>
+
+        <div class="map-info-card">
+            <div class="map-info-icon">🚉</div>
+            <div>
+                <small>Nearest Station</small>
+                <strong id="nearestStationName">--</strong>
+            </div>
+        </div>
+
+        <div class="map-info-card">
+            <div class="map-info-icon">🎯</div>
+            <div>
+                <small>Destination</small>
+                <strong id="mapDestinationName">--</strong>
+            </div>
+        </div>
+
+        <div class="map-info-card">
+            <div class="map-info-icon">⏱️</div>
+            <div>
+                <small>Estimated Time</small>
+                <strong id="estimatedJourneyTime">--</strong>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ================= END LIVE TRAIN MAP ================= -->
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+<!-- ================= TRAIN STATUS MODAL ================= -->
+<div id="trainStatusModal" class="train-status-modal" aria-hidden="true">
+    <div class="train-status-backdrop" onclick="closeTrainStatus()"></div>
+
+    <div class="train-status-box" role="dialog" aria-modal="true" aria-labelledby="trainStatusTitle">
+
+        <button
+            type="button"
+            class="train-status-close"
+            onclick="closeTrainStatus()"
+            aria-label="Close">
+            &times;
+        </button>
+
+        <div class="train-status-header">
+            <span class="train-status-badge">🚆 TRAIN RUNNING STATUS</span>
+
+            <h2 id="trainStatusTitle">Train</h2>
+
+            <div class="train-status-route" id="trainStatusRoute">
+                Origin → Destination
+            </div>
+
+            <div class="train-status-meta">
+                <span id="trainStatusNumber">Train No. —</span>
+                <span id="trainStatusUpdated">Updated: —</span>
+            </div>
+        </div>
+
+        <div class="train-status-demo-note">
+            <strong>ℹ️ SmartTour360 Demo Status</strong>
+            <span>
+                This is demonstration data for the hackathon UI.
+                It is not connected to a live railway API.
+            </span>
+        </div>
+
+        <div class="train-status-current">
+            <span class="train-status-pulse"></span>
+            <div>
+                <small>CURRENT JOURNEY</small>
+                <strong id="trainStatusCurrent">En route</strong>
+            </div>
+        </div>
+
+        <div class="train-status-timeline" id="trainStatusTimeline"></div>
+
+    </div>
+</div>
+<!-- ================= END TRAIN STATUS MODAL ================= -->
+
+<!-- ================= SMART TOUR360 POLISH UI ================= -->
+<div id="smartToast" class="smart-toast" role="status" aria-live="polite"></div>
+<div id="smartLoading" class="smart-loading" aria-hidden="true">
+    <div class="smart-loading-card">
+        <div class="smart-spinner"></div>
+        <strong>Building your smart itinerary…</strong>
+        <span>Personalizing your trip for you.</span>
+    </div>
+</div>
+<!-- ================= END SMART TOUR360 POLISH UI ================= -->
+
+
+<!-- ================= PAYMENT SUCCESS + RECEIPT ================= -->
+
+<div id="paymentSuccessModal" class="payment-success-modal" aria-hidden="true">
+
+    <div class="payment-success-box">
+
+        <!-- SUCCESS ICON -->
+        <div class="success-check">
+            ✓
+        </div>
+
+        <h2>Payment Successful!</h2>
+
+        <p class="success-message">
+            Your demo booking has been confirmed successfully.
+        </p>
+
+
+        <!-- RECEIPT -->
+        <div class="booking-receipt" id="bookingReceipt">
+
+            <div class="receipt-header">
+                <div>
+                    <h3>🌍 SmartTour360</h3>
+                    <span>Digital Booking Receipt</span>
+                </div>
+
+                <div class="receipt-paid">
+                    PAID
+                </div>
+            </div>
+
+
+            <div class="receipt-divider"></div>
+
+
+            <div class="receipt-info">
+
+                <div>
+                    <small>Traveler Name</small>
+                    <strong id="receiptTravelerName">—</strong>
+                </div>
+
+                <div>
+                    <small>Service</small>
+                    <strong id="receiptService">—</strong>
+                </div>
+
+                <div>
+                    <small>Amount</small>
+                    <strong id="receiptAmount">₹0</strong>
+                </div>
+
+                <div>
+                    <small>Payment Method</small>
+                    <strong id="receiptPaymentMethod">UPI</strong>
+                </div>
+
+                <div>
+                    <small>Transaction ID</small>
+                    <strong id="receiptTransactionId">—</strong>
+                </div>
+
+                <div>
+                    <small>Booking ID</small>
+                    <strong id="receiptBookingId">—</strong>
+                </div>
+
+                <div>
+                    <small>Booking Date</small>
+                    <strong id="receiptDate">—</strong>
+                </div>
+
+                <div>
+                    <small>Status</small>
+                    <strong class="receipt-confirmed">
+                        ✓ Confirmed
+                    </strong>
+                </div>
+
+            </div>
+
+
+            <!-- QR -->
+            <div class="receipt-qr-section">
+
+                <div id="receiptQRCode" class="receipt-qr"></div>
+
+                <strong>Scan to Verify Booking</strong>
+
+                <small>
+                    Scan with a phone to view this booking's verification details. If the demo is running locally, the QR contains the booking details directly.
+                </small>
+
+                <a id="receiptVerifyLink" href="verify.html" target="_blank" rel="noopener" class="receipt-verify-link">Open Verification Page →</a>
+
+            </div>
+
+
+            <div class="receipt-footer">
+                SmartTour360 • YatraTech
+                <br>
+                Demo Booking — No Real Payment
+            </div>
+
+        </div>
+
+
+        <!-- BUTTONS -->
+
+        <div class="receipt-actions">
+
+            <button
+                class="receipt-download-btn"
+                onclick="downloadBookingReceipt()"
+            >
+                📄 Download Receipt
+            </button>
+
+            <button
+                class="receipt-done-btn"
+                onclick="closePaymentSuccess()"
+            >
+                Done
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ================= END PAYMENT SUCCESS + RECEIPT ================= -->
+<!-- ================= END DEMO PAYMENT SUCCESS ================= -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+  emailjs.init({ publicKey: "xCYa_svECGc8rs5HX" });
+</script>
+<script src="script.js"></script>
+
+<!-- =========================================================
+     SMARTTOUR360 - NEW SMART TRAVEL FEATURES
+========================================================= -->
+
+
+
+<!-- EMERGENCY SAFETY MODAL -->
+<div class="st360-feature-modal" id="emergencySafetyModal" aria-hidden="true">
+    <div class="st360-feature-backdrop" onclick="closeEmergencySafety()"></div>
+    <div class="st360-feature-panel st360-emergency-panel" role="dialog" aria-modal="true">
+        <button class="st360-feature-close" type="button" onclick="closeEmergencySafety()">×</button>
+        <div class="st360-feature-kicker">🚨 TOURIST SAFETY</div>
+        <h2>Emergency Tourist Safety System</h2>
+        <p class="st360-feature-subtitle">
+            Quick access to essential help and safety tools while travelling.
+        </p>
+
+        <div class="st360-emergency-grid">
+            <button class="st360-emergency-action sos" type="button" onclick="confirmTouristSOS()">
+                <span>🆘</span><b>SOS</b><small>Emergency help</small>
+            </button>
+            <a class="st360-emergency-action" href="tel:112">
+                <span>👮</span><b>Emergency</b><small>Call 112</small>
+            </a>
+            <a class="st360-emergency-action" href="tel:108">
+                <span>🚑</span><b>Ambulance</b><small>Medical help</small>
+            </a>
+            <a class="st360-emergency-action" href="tel:101">
+                <span>🔥</span><b>Fire</b><small>Fire service</small>
+            </a>
+            <button class="st360-emergency-action" type="button" onclick="shareTouristLocation()">
+                <span>📍</span><b>My Location</b><small>Share location</small>
+            </button>
+            <button class="st360-emergency-action" type="button" onclick="findNearbyHospital()">
+                <span>🏥</span><b>Hospital</b><small>Find nearby</small>
+            </button>
+        </div>
+
+        <div class="st360-safety-note">
+            <strong>🛡️ Safety first</strong>
+            <span>For a real emergency, contact the appropriate local emergency service.</span>
+        </div>
+    </div>
+</div>
+
+<!-- NEARBY PLACES + SMART MAP -->
+<section class="st360-smart-tools-section" id="smartTools">
+    <div class="st360-section-heading">
+        <div class="st360-feature-kicker">📍 SMART LOCATION SERVICES</div>
+        <h2>Nearby Places & Smart Tourism Map</h2>
+        <p>Explore useful tourist, safety and travel locations around your selected destination.</p>
+    </div>
+
+    <div class="st360-tools-grid">
+        <div class="st360-tool-card">
+            <div class="st360-tool-icon">📍</div>
+            <h3>Nearby Places Finder</h3>
+            <p>Quickly discover attractions, hospitals, police stations, hotels and food spots.</p>
+
+            <div class="st360-place-controls">
+                <select id="nearbyPlaceType">
+                    <option value="tourist">🏛️ Tourist Places</option>
+                    <option value="hospital">🏥 Hospitals</option>
+                    <option value="police">👮 Police Stations</option>
+                    <option value="hotel">🏨 Hotels</option>
+                    <option value="restaurant">🍴 Restaurants</option>
+                </select>
+                <button type="button" onclick="findNearbyPlaces()">Find Nearby</button>
+            </div>
+            <div id="nearbyPlacesResults" class="st360-nearby-results"></div>
+        </div>
+
+        <div class="st360-tool-card st360-map-card">
+            <div class="st360-tool-icon">🗺️</div>
+            <h3>Smart Tourism Map</h3>
+            <p>Use your current location or choose a destination to view it on the interactive map.</p>
+
+            <div class="st360-map-controls">
+                <input id="smartMapDestination" type="text" placeholder="Enter destination e.g. Rishikesh">
+                <button type="button" onclick="showSmartTourMap()">Show on Map</button>
+                <button type="button" class="secondary" onclick="useMyMapLocation()">📍 My Location</button>
+            </div>
+            <div id="smartTourMap"></div>
+        </div>
+    </div>
+</section>
+
+<!-- SMART PACKING ASSISTANT -->
+<section class="st360-smart-tools-section st360-packing-section" id="packingAssistant">
+    <div class="st360-section-heading">
+        <div class="st360-feature-kicker">🧳 SMART TRAVEL TOOL</div>
+        <h2>Smart Packing Assistant</h2>
+        <p>Build a simple destination-based checklist before your journey.</p>
+    </div>
+
+    <div class="st360-packing-box">
+        <div class="st360-packing-form">
+            <select id="packingDestination">
+                <option value="">Select Destination</option>
+                <option>Rishikesh</option>
+                <option>Manali</option>
+                <option>Goa</option>
+                <option>Jaipur</option>
+                <option>Jammu & Kashmir</option>
+                <option>Varanasi</option>
+                <option>Ayodhya</option>
+                <option>Vrindavan</option>
+                <option>Agra</option>
+                <option>Shimla</option>
+                <option>Kerala</option>
+                <option>Udaipur</option>
+            </select>
+            <input id="packingDays" type="number" min="1" max="30" value="3" placeholder="Days">
+            <button type="button" onclick="generatePackingList()">Generate Packing List</button>
+        </div>
+        <div id="packingResults" class="st360-packing-results"></div>
+    </div>
+</section>
+
+<!-- =========================================================
+     END NEW SMART TRAVEL FEATURES
+========================================================= -->
+
+<!-- ================= VIRTUAL GROUP TOUR ================= -->
+<section class="st360-smart-tools-section st360-group-tour-section" id="virtualGroupTour">
+    <div class="st360-section-heading">
+        <div class="st360-feature-kicker">👥 SMART SOCIAL TRAVEL</div>
+        <h2>Virtual Group Tour</h2>
+        <p>Join a guided virtual travel room, meet fellow travellers and follow the same destination experience together.</p>
+    </div>
+    <div class="st360-group-tour-grid">
+        <div class="st360-tool-card">
+            <div class="st360-tool-icon">🌐</div>
+            <h3>Live Virtual Tour Rooms</h3>
+            <p>Choose a demo group tour and join the shared virtual travel experience.</p>
+            <div class="st360-tour-room-list" id="virtualTourRooms">
+                <button type="button" class="st360-tour-room" onclick="joinVirtualTour('Rishikesh Ganga Experience')"><b>🏞️ Rishikesh Ganga Experience</b><span>18 travellers • Guided</span></button>
+                <button type="button" class="st360-tour-room" onclick="joinVirtualTour('Jaipur Heritage Walk')"><b>🏰 Jaipur Heritage Walk</b><span>24 travellers • Guided</span></button>
+                <button type="button" class="st360-tour-room" onclick="joinVirtualTour('Goa Beach Explorer')"><b>🌊 Goa Beach Explorer</b><span>16 travellers • Guided</span></button>
+            </div>
+            <div id="virtualTourStatus" class="st360-feature-status" aria-live="polite">Select a room to join.</div>
+        </div>
+        <div class="st360-tool-card st360-group-preview">
+            <div class="st360-group-preview-screen">
+                <span class="st360-live-pill">● DEMO LIVE ROOM</span>
+                <strong id="virtualTourTitle">SmartTour360 Virtual Guide</strong>
+                <small>360° destination walkthrough • group chat • guide highlights</small>
+            </div>
+            <div class="st360-group-members"><span>👤</span><span>👤</span><span>👤</span><span>👤</span><b>+12 travellers</b></div>
+            <button type="button" onclick="startVirtualTourDemo()">▶ Start Virtual Tour Demo</button>
+        </div>
+    </div>
+</section>
+
+<!-- ================= SEAT AVAILABILITY TRACKER ================= -->
+<section class="st360-smart-tools-section st360-seat-section" id="seatTracker">
+    <div class="st360-section-heading">
+        <div class="st360-feature-kicker">💺 SMART TRANSPORT PLANNING</div>
+        <h2>Seat Availability Tracker</h2>
+        <p>Check demo seat availability for group travel before choosing a train or metro connection.</p>
+    </div>
+    <div class="st360-seat-box">
+        <div class="st360-seat-form">
+            <select id="seatTransportType">
+                <option value="train">🚆 Train</option>
+                <option value="metro">🚇 Metro</option>
+            </select>
+            <select id="seatRoute">
+                <option value="Dehradun → New Delhi">Dehradun → New Delhi</option>
+                <option value="New Delhi → Varanasi">New Delhi → Varanasi</option>
+                <option value="Delhi → IGI Airport">Delhi → IGI Airport</option>
+                <option value="Delhi Metro Blue Line">Delhi Metro Blue Line</option>
+                <option value="Delhi Metro Yellow Line">Delhi Metro Yellow Line</option>
+            </select>
+            <input id="seatGroupSize" type="number" min="1" max="50" value="4" placeholder="Group size">
+            <button type="button" onclick="checkSeatAvailability()">Check Seats</button>
+        </div>
+        <div id="seatAvailabilityResult" class="st360-seat-result"></div>
+        <div class="st360-demo-note">ℹ️ Demo availability for hackathon UI — not connected to a live railway/metro booking API.</div>
+    </div>
+</section>
+
+<!-- ================= CRIME SAFETY ================= -->
+<section class="st360-smart-tools-section st360-crime-section" id="crimeSafety">
+    <div class="st360-section-heading">
+        <div class="st360-feature-kicker">🛡️ TOURIST SAFETY INTELLIGENCE</div>
+        <h2>Crime Safety Alerts</h2>
+        <p>View non-graphic demo safety alerts and simple precautions for tourist areas.</p>
+    </div>
+    <div class="st360-crime-grid">
+        <div class="st360-tool-card">
+            <h3>📍 Safety Alert Checker</h3>
+            <div class="st360-crime-controls">
+                <select id="crimeDestination">
+                    <option value="Rishikesh">Rishikesh</option><option value="Jaipur">Jaipur</option><option value="Goa">Goa</option><option value="Varanasi">Varanasi</option><option value="Delhi">Delhi</option>
+                </select>
+                <button type="button" onclick="checkCrimeSafety()">Check Safety</button>
+            </div>
+            <div id="crimeSafetyResult" class="st360-crime-result"></div>
+        </div>
+        <div class="st360-tool-card">
+            <h3>🛡️ Smart Safety Tips</h3>
+            <div class="st360-safety-list">
+                <div>💳 Keep valuables secure in crowded areas.</div>
+                <div>📱 Save important contacts before travelling.</div>
+                <div>👥 Stay with your group after dark.</div>
+                <div>🚨 Use the Emergency button for urgent help.</div>
+                <div>📍 Prefer well-lit, populated routes.</div>
+            </div>
+        </div>
+    </div>
+    <div class="st360-demo-note">ℹ️ Safety alerts shown here are illustrative demo data. They are not official crime statistics or real-time police alerts.</div>
+</section>
+
+<!-- ================= AI MOOD + PRIVACY ================= -->
+<section class="st360-smart-tools-section st360-ai-mood-section" id="aiMood">
+    <div class="section-title">
+        <p class="section-tag">🧠 AI PERSONALIZATION</p>
+        <h2>AI Mood-Based Travel Suggestions</h2>
+        <p>Allow camera access to detect a face and estimate an expression signal for a personalized travel suggestion.</p>
+    </div>
+
+    <div class="st360-mood-grid">
+        <div class="st360-tool-card st360-mood-camera-card">
+            <div class="st360-camera-wrap">
+                <video id="moodVideo" autoplay muted playsinline></video>
+                <canvas id="moodCanvas" aria-hidden="true"></canvas>
+                <div id="moodCameraPlaceholder" class="st360-camera-placeholder">📷 Camera is off</div>
+                <span id="moodFaceBadge" class="st360-face-badge">Face not detected</span>
+            </div>
+            <div class="st360-mood-actions">
+                <button type="button" class="st360-primary-btn" id="startMoodBtn" onclick="startAIMoodScan()">📷 Start AI Mood Scan</button>
+                <button type="button" class="st360-secondary-btn" onclick="stopAIMoodScan()">⏹ Stop Camera</button>
+            </div>
+            <p id="moodPrivacyStatus" class="st360-demo-note">Privacy: camera processing stays in this browser during the demo; no camera image is uploaded by this feature.</p>
+        </div>
+
+        <div class="st360-tool-card st360-mood-result-card">
+            <div class="st360-mood-signal">
+                <span>AI expression signal</span>
+                <strong id="moodSignal">Waiting…</strong>
+            </div>
+            <div id="moodRecommendation" class="st360-mood-recommendation">
+                Start the scan to get a SmartTour360 travel suggestion.
+            </div>
+            <div class="st360-mood-manual">
+                <span>Want more control?</span>
+                <button type="button" onclick="setMoodPreference('relaxed')">😌 Relaxed</button>
+                <button type="button" onclick="setMoodPreference('energetic')">⚡ Energetic</button>
+                <button type="button" onclick="setMoodPreference('balanced')">🧭 Balanced</button>
+            </div>
+            <p class="st360-demo-note">AI mood results are estimates only, not a psychological or medical assessment. You can always choose your own preference.</p>
+        </div>
+    </div>
+</section>
+
+<!-- REVIEWS & RATINGS -->
+<section class="st360-smart-tools-section st360-review-section" id="reviews">
+    <div class="st360-section-heading">
+        <div class="st360-feature-kicker">⭐ TRAVELLER VOICE</div>
+        <h2>Tourist Reviews & Ratings</h2>
+        <p>Share your travel experience and help other travellers choose better destinations. Your review is saved on this website and submitted to the YatraTech team.</p>
+    </div>
+
+    <div class="st360-review-layout">
+        <div class="st360-review-summary" id="reviewSummary">
+            <div class="st360-rating-number" id="reviewAverage">4.8</div>
+            <div class="st360-stars">★★★★★</div>
+            <div class="st360-review-count" id="reviewCount">3 traveller reviews</div>
+        </div>
+
+        <form class="st360-review-form" onsubmit="submitTouristReview(event)">
+            <select id="reviewDestination" required>
+                <option value="">Select Destination</option>
+                <option>Rishikesh</option>
+                <option>Manali</option>
+                <option>Goa</option>
+                <option>Jaipur</option>
+                <option>Jammu & Kashmir</option>
+                <option>Varanasi</option>
+                <option>Ayodhya</option>
+                <option>Vrindavan</option>
+                <option>Agra</option>
+                <option>Shimla</option>
+                <option>Kerala</option>
+                <option>Udaipur</option>
+            </select>
+
+            <select id="reviewRating" required>
+                <option value="">Rating</option>
+                <option value="5">★★★★★ 5/5</option>
+                <option value="4">★★★★☆ 4/5</option>
+                <option value="3">★★★☆☆ 3/5</option>
+                <option value="2">★★☆☆☆ 2/5</option>
+                <option value="1">★☆☆☆☆ 1/5</option>
+            </select>
+
+            <input id="reviewName" type="text" maxlength="40" placeholder="Your name" required>
+            <input id="reviewEmail" type="email" maxlength="120" placeholder="Your email address" required autocomplete="email">
+            <textarea id="reviewText" maxlength="240" rows="4" placeholder="Write your travel experience..." required></textarea>
+            <button type="submit">⭐ Submit Review</button>
+        </form>
+    </div>
+
+    <div id="touristReviewsList" class="st360-reviews-list"></div>
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="footer-content">
+
+        <div class="footer-brand">
+            <h3>🌍 SmartTour360</h3>
+            <p>
+                A smart tourism platform designed to improve
+                the travel experience and promote tourism businesses.
+            </p>
+        </div>
+
+        <div class="footer-problem">
+            <h4>Problem Statement</h4>
+            <p>ID: <strong>26204</strong></p>
+            <p>Student Innovation – Tourism Industry</p>
+        </div>
+
+        <div class="footer-contact">
+            <h4>Contact Us</h4>
+            <a href="mailto:yatraTech360@gmail.com">✉️ yatraTech360@gmail.com</a>
+            <a href="tel:+910520236614">📞 +91 0520236614</a>
+            <p>YatraTech Team • Smart Tourism Innovation</p>
+        </div>
+
+    </div>
+
+    <div class="footer-quick-links">
+        <h4>Quick Links</h4>
+        <div class="footer-links-row">
+            <a href="#home">Home</a>
+            <a href="#destinations">Destinations</a>
+            <a href="#hotels">Hotels</a>
+            <a href="#stay">Smart Budget</a>
+            <a href="#planner">Trip Planner</a>
+            <a href="#assistant">AI Assistant</a>
+            <a href="#smartTools">Nearby & Map</a>
+            <a href="#packingAssistant">Packing Assistant</a>
+            <a href="#reviews">Reviews & Ratings</a>
+        </div>
+    </div>
+
+    <div class="copyright">
+        © 2026 SmartTour360 | YatraTech | Student Innovation Project
+    </div>
+
+</footer>
+<!-- ================= END FOOTER ================= -->
+
+</body>
+</html>
