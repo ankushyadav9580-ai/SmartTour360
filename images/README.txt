@@ -1,0 +1,1 @@
+Keep your existing destination images here (rishikesh.jpg, manali.jpg, goa.jpg, jaipur.jpg, jammu-kashmir.jpg, varanasi.jpg, ayodhya.jpg, vrindavan.jpg, agra.jpg, shimla.jpg, kerala.jpg, udaipur.jpg).
